@@ -1,5 +1,9 @@
 ## Team Members
 -LI DANDAN(3036458605)
+-MAHMUD NAFIS BIN
+-RUFINO HYUGO ETHAN
+-WU QINGYA
+-YU SZE YUI(3036391039)
 
 --------------------------------
 
@@ -25,7 +29,7 @@ This game has three Difficulty Levels: Easy/Medium/Hard
 -Easy: There is no Virus. Player needs to collect keys and reach the Exit.
 -Medium: Medium mode adds Virus, X-Gate and stunned Virus. X-Gate will temporarily stop Virus chasing 
          the Player. When X-Gate opens, Virus starts to move. Player needs to eat Z to freeze Virus.
--Hard: The maze is much bigger. Virus increases speed(double) when it is close to the Player.
+-Hard: The maze is much bigger. Virus increases speed(double) when it is close to the Player. 
 
 ----------------------------------
 
@@ -58,6 +62,7 @@ Score:
 # How 6 coding requirements are satisfied?
 
 1.Generation of random events:
+-Map is randomly picked from a library of finished maps.
 
 
 2.Data structures for storing data:
