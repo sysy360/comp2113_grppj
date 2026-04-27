@@ -9,7 +9,12 @@ static Pos bfsNextStep(const MapState& ms) { //Pos和MapState都是map定义的s
     Pos dst = ms.playerPos;
 
     //parent表示前一格
-    vector<vector<Pos>> parent;  //二维vector，内层表示col，外层表示row
+    vector<vector<Pos>> parent(ms.rows);//二维vector，内层表示col，外层表示row
+    for (int i=0;i<ms.rows;i++){
+        for(int j=0;j<ms.cols;j++){
+            parent[i].push_back({-1,-1});
+        }
+    }
     vector<vector<bool>> visited(ms.rows);
     //每个格子都初始化为false
     for (int i=0;i<ms.rows;i++){
