@@ -73,6 +73,7 @@ Score:
 
 
 4.File input/output:
+- Usage of <fstream> libraries for ifstream and ofstream, enabling outputting scores to the terminal as well inputting scores into scores.txt to save local data progress of players attempting the game.
 
 
 5.Program codes in multiple files:
@@ -81,6 +82,8 @@ Score:
 
 
 6.Multiple difficulty levels:
+In globals.h, we have created a clear picture or demonstration for each difficulty minimum and maximum tools or obstacles. For example, the Stun('Z') varied among difficulties and the gates also varied for the maximum gates available in Medium and Hard Difficulty. Ensuring the difficulty of both Medium and Hard differed.
+Easy difficulty,  on the other hand, is the simplest mode, as the virus doesn't exist and the player is only required to pass the game without any threats but with gate obstacles.
 
 
 
