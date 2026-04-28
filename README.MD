@@ -66,6 +66,9 @@ Score:
 
 
 2.Data structures for storing data:
+- The data stored are mostly about the players, the difficulty they have picked and the scores. Which would be stored in exactly like so,
+PLAYERS DIFFICULTY STEPS
+The orders starting from the least step taken to the most, regardless of difficulty. Plus, the data stored this way due to scores.cpp, which uses istringstream extract(line) that would extract one by one, save it to the memory, then overwrite the file, then put it back to the .txt file again
 
 
 3.Dynamic memory management:
@@ -79,9 +82,11 @@ Score:
 5.Program codes in multiple files:
 -The project includes 'main.cpp', 'game.cpp', 'map.cpp', 'virus.cpp', 'score.cpp' and their corresponding 
  header files.
+-This enable the usage of cross file functions enabling simplicity in code reading, and easy to distinguish to which function belongs to, and how they play a role in their specific task.
 
 
 6.Multiple difficulty levels:
+
 In globals.h, we have created a clear picture or demonstration for each difficulty minimum and maximum tools or obstacles. For example, the Stun('Z') varied among difficulties and the gates also varied for the maximum gates available in Medium and Hard Difficulty. Ensuring the difficulty of both Medium and Hard differed.
 Easy difficulty,  on the other hand, is the simplest mode, as the virus doesn't exist and the player is only required to pass the game without any threats but with gate obstacles.
 
