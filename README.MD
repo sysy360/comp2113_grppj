@@ -55,6 +55,15 @@ Game and Interaction:
 
 
 Score:
+- Loading the scores from the .txt files
+- Saving the scores (storing the scores into a .txt file)
+         -> Constant overwriting of the scores, and then reoutput the saved scores into the .txt file
+- Adding the scores into the memory then sort the scores based on the least steps taken
+- Display Outlay / Positioning template
+- Prompt username
+         -> To display/give guidance for the player to input their name only in Uppercase and alphabetical
+         -> Name must be filled and cannot be left empty.
+         -> Failure to comply will then, the program will automatically save the player progress as "BOB"
 
 
 -----------------------------------
