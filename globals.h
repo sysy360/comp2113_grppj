@@ -31,8 +31,8 @@ enum Difficulty {EASY, MEDIUM, HARD};
 //Stun Duration ranges (based on player steps)
 #define MEDIUM_STUN_MIN 1
 #define MEDIUM_STUN_MAX 3
-#define HARD_STUN_MIN 1
-#define  HARD_STUN_MAX 5
+#define HARD_STUN_MIN 5
+#define  HARD_STUN_MAX 7
 
 //Defining when the stun will be repleneished
 #define STUN_REPLENISH_DELAY 3
