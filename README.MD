@@ -17,8 +17,8 @@ Objects:
 - 'P': Player. It is controlled by user.
 - 'V': Virus. Virus chases Player.
 - 'E': Exit. Player need to go to exit to win.
-- 'Gn': Gate. Gate will open when Player gets the key. n represents the different gates. 
-- 'Kn': Key.
+- 'Gn': Gate. Gate will open when Player gets the key. n represents the number of gates responding to the keys. 
+- 'Kn': Key. where n represents the number of different keys responding to the gates.
 - 'X': X-Gate. A temporary Gate that stops Virus until its count decreases to zero.
 - 'Z': Stun tile. It freezes the Virus for limited steps.
 - '*': Stunned Virus.
