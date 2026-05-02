@@ -583,7 +583,19 @@ void printMap(const MapState& ms, bool virusStunned, int virusStunSteps, int pla
             buf += std::to_string(virusStunSteps);
             buf += " steps)          ";
         } else {
-            buf += "  |  Virus: CHASING             ";
+            // If any X-Gate is still closed, the virus is held back.
+            // Show its countdown instead of pretending it's chasing.
+            int xgateStepsLeft = -1;
+            for (const auto& xg : ms.xgates) {
+                if (!xg.open) { xgateStepsLeft = xg.stepsLeft; break; }
+            }
+            if (xgateStepsLeft > 0) {
+                buf += "  |  Virus: BLOCKED (X-Gate opens in ";
+                buf += std::to_string(xgateStepsLeft);
+                buf += ")   ";
+            } else {
+                buf += "  |  Virus: CHASING                  ";
+            }
         }
     }
     buf += "\n";
