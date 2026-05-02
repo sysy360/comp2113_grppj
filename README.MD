@@ -152,6 +152,9 @@ In 'game.cpp':
 
 -Clean: make clean
 
+-------------------------------------
+## Video Capture of the game in terminal
+https://drive.google.com/file/d/1etSbYd3zt1ys0YKz34WXhsGlwG_UQF9g/view?usp=sharing
 
 
 
