@@ -63,6 +63,11 @@ Main:
 - Handles both win and loss outcomes with appropriate messages
 
 Game:
+- Runs the main loop that keeps the game playing frame by frame
+- Reads the WASD keyboard inputs from the player
+- Stops the player from walking through walls
+- Triggers events when the player steps on keys, gates and stun tiles
+- Ticks down the X-Gate timer every time the player takes a step
 
 
 Score:
@@ -110,6 +115,7 @@ The orders starting from the least step taken to the most, regardless of difficu
 -The project includes 'main.cpp', 'game.cpp', 'map.cpp', 'virus.cpp', 'score.cpp' and their corresponding 
  header files.
 -This enable the usage of cross file functions enabling simplicity in code reading, and easy to distinguish to which function belongs to, and how they play a role in their specific task.
+-For example, the core game engine is separated into game.cpp and game.h which handle the main gameplay loops and player interactions so the main file stays clean.
 
 
 6.Multiple difficulty levels:
