@@ -54,6 +54,14 @@ Virus:
 
 
 Game and Interaction:
+- Player control with "WASD", with no enter require and quit anytime by Q, as well as restraining the motion to only inside the walls and not passing closed gates
+- Maze produces differently in sizes based on difficulty, which dynamically updated step-by-step, or as gates open or tiles disappear.
+- Ensure the game ended when the player step on the 'E', and displays total steps taken
+- Ensuring the keys and gate system logic is consistent throughout the game.
+- X-Gates logic which ensures the validity of the virus movement after it is opened, emphasizing on the time pressure mechanics
+- Stun tiles, tactical escape against virus in opportunities, which is more valuable as the difficulty increases from medium to difficult
+- Virus Enemy: ensuring that the virus chases the player, can catch the player to end the game, obeys the map rules, and cease to exist on easy. In addition, it also provides contrast logic depending on difficulty, which medium ensuring to move at constant speed, with no adaptive behavior. While on hard difficulty, uses pathfinding BFS to track the player and speeds up when the player is close and all the gates are open
+- Losing condition, ensuring that the virus able to enters the player's tile, therefore causing the player to lose the game as the progress will not be saved. However, player can always win in Easy mode.
 
 Main:
 - Program entry point with random seed initialisation
