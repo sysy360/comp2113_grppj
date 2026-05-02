@@ -2,7 +2,7 @@
 -LI DANDAN(3036458605)
 -MAHMUD NAFIS BIN
 -RUFINO HYUGO ETHAN (3036572437)
--WU QINGYA
+-WU QINGYA (3036389880)
 -YU SZE YUI(3036391039)
 
 --------------------------------
@@ -54,6 +54,13 @@ Virus:
 
 
 Game and Interaction:
+
+Main:
+- Program entry point with random seed initialisation
+- Difficulty selection (Easy/Medium/Hard) with input validation
+- Orchestrates game flow: title -> difficulty -> game run -> score saving ->leaderboard
+- Post-game score management (save on win, display rankings)
+- Handles both win and loss outcomes with appropriate messages
 
 
 
