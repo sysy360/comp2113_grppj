@@ -46,11 +46,11 @@ Map:
 -Stun tiles
 
 Virus:
--Virus chases the Player
--BFS path finding
--Virus is blocked by closed X-Gates
--Stunned Virus
--In Hard mode, the Virus increases speed when closing to Player
+-In Medium and Hard mode, Virus chases the Player actively instead of chasing randomly.
+-Virus uses Breath-First Search (BFS) path finding which can find the shortest way to Player. BFS
+-Virus is blocked by closed X-Gates for limited steps at the beginning of the game.
+-Stunned Virus: Virus would be frozen for limited steps when it touches the 'Z'.
+-In Medium mode, the Virus move one step every time. In Hard mode, the Virus move two steps when it is close to Player
 
 
 Game and Interaction:
@@ -94,6 +94,9 @@ The orders starting from the least step taken to the most, regardless of difficu
 
 3.Dynamic memory management:
 -The virus part uses data structures such as vector<vector<Pos>>, vector<vector<bool>> and quene<Pos>
+-vector<vector<Pos>> is used to store the parent grid (last grid).
+-vector<vector<bool>> is used to store whether the grid has been visited or not.
+-quene<Pos> help Virus do search job. It stores some grids waiting to be checked by Virus.
 
 
 4.File input/output:
