@@ -1,121 +1,63 @@
-#include "main.h"
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+#include "globals.h"
+#include "game.h"
 #include "score.h"
 
-#include <cctype>
-#include <iostream>
-#include <string>
-#include <vector>
-
-using namespace std;
-
-namespace {
-bool isUpperAlphaName(const string& name) {
-    if (name.empty()) {
-        return false;
-    }
-    for (char ch : name) {
-        if (!isupper(static_cast<unsigned char>(ch))) {
-            return false;
-        }
-    }
-    return true;
-}
-} // namespace
-
-const char* difficultyToString(Difficulty difficulty) {
-    switch (difficulty) {
-    case EASY:
-        return "Easy";
-    case MEDIUM:
-        return "Medium";
-    case HARD:
-    default:
-        return "Hard";
-    }
-}
-
-Difficulty selectDifficulty() {
-    cout << "Welcome! Which adventure would you like (Easy/Medium/Hard)?\n";
-
-    int wrongAttempts = 0;
-    string input;
-    while (true) {
-        cin >> input;
-
-        for (char& ch : input) {
-            ch = static_cast<char>(toupper(static_cast<unsigned char>(ch)));
-        }
-
-        if (input == "EASY") {
-            return EASY;
-        }
-        if (input == "MEDIUM") {
-            return MEDIUM;
-        }
-        if (input == "HARD") {
-            return HARD;
-        }
-
-        wrongAttempts++;
-        if (wrongAttempts >= 5) {
-            cout << "Too many invalid attempts. Defaulting to Hard.\n";
-            return HARD;
-        }
-
-        cout << "Unknown difficulty. Please enter Easy, Medium, or Hard.\n";
-    }
-}
-
-string getPlayerName() {
-    cout << "What's your name, Adventurer? (Uppercase letters only)\n";
-
-    int wrongAttempts = 0;
-    string name;
-    while (true) {
-        cin >> name;
-
-        if (isUpperAlphaName(name)) {
-            return name;
-        }
-
-        wrongAttempts++;
-        if (wrongAttempts >= 3) {
-            cout << "Too many invalid attempts. Name saved as BOB.\n";
-            return "BOB";
-        }
-
-        cout << "Input the correct name accordingly! (Uppercase letters only)\n";
-    }
-}
-
-int gameLoop(Difficulty difficulty) {
-    int stepsTaken = 0;
-
-    // The actual round-by-round game logic should be provided by game/map modules.
-    // Replace this block with your real game engine call when game.h is available.
-    cout << "\n[Game Start] Difficulty: " << difficultyToString(difficulty) << "\n";
-    cout << "Game module hook not linked yet. Enter steps taken for this run: ";
-    cin >> stepsTaken;
-    if (stepsTaken < 0) {
-        stepsTaken = 0;
-    }
-
-    return stepsTaken;
-}
-
+// ─────────────────────────────────────────────────────────────
+//  main – program entry point
+//
+//  Flow:
+//    1. Seed random number generator
+//    2. Print title banner
+//    3. Player chooses difficulty
+//    4. Run game loop
+//    5. On win: prompt username, save score, show leaderboard
+//    6. On lose: show encouragement, show leaderboard
+// ─────────────────────────────────────────────────────────────
 int main() {
-    Difficulty difficulty = selectDifficulty();
-    int steps = gameLoop(difficulty);
-    string username = getPlayerName();
+    // Seed RNG with current time for randomised maps each run
+    srand((unsigned int)time(nullptr));
 
-    vector<ScoreRecord> records = loadScores();
-    addScore(records, username, difficultyToString(difficulty), steps);
-    saveScores(records);
+    // ── Title Banner ──────────────────────────────────────────
+    std::cout << "\n";
+    std::cout << "  ╔═══════════════════════════════════════════╗\n";
+    std::cout << "  ║         M A Z E   A D V E N T U R E       ║\n";
+    std::cout << "  ║   Escape the maze before the Virus wins!   ║\n";
+    std::cout << "  ╚═══════════════════════════════════════════╝\n";
 
-    cout << "\nSaved Score: " << username
-         << " | " << difficultyToString(difficulty)
-         << " | Steps: " << steps << "\n";
-    displayScores(records);
+    // ── Choose Difficulty ─────────────────────────────────────
+    Difficulty diff = chooseDifficulty();
+
+    std::string diffStr;
+    switch (diff) {
+        case EASY:   diffStr = "Easy";   break;
+        case MEDIUM: diffStr = "Medium"; break;
+        case HARD:   diffStr = "Hard";   break;
+    }
+    std::cout << "\n  Difficulty selected: " << diffStr << "\n";
+    std::cout << "  Generating maze... Good luck!\n";
+
+    // ── Run Game ──────────────────────────────────────────────
+    int steps = runGame(diff);
+
+    // ── Load existing leaderboard ─────────────────────────────
+    std::vector<ScoreRecord> scores = loadScores();
+
+    if (steps > 0) {
+        // Player won – record score
+        std::string username = promptUsername();
+        addScore(scores, username, diffStr, steps);
+        saveScores(scores);
+        std::cout << "\n  Score saved!\n";
+    } else {
+        std::cout << "  Better luck next time, Adventurer!\n";
+    }
+
+    // ── Display leaderboard ───────────────────────────────────
+    displayScores(scores);
 
     return 0;
 }
