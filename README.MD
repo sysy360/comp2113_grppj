@@ -14,43 +14,43 @@ If Player reaches Exit, user wins.
 IF Virus reaches Player, user loses.
 
 Objects:
--'P': Player. It is controlled by user.
--'V': Virus. Virus chases Player.
--'E': Exit. Player need to go to exit to win.
--'Gn': Gate. Gate will open when Player gets the key. n represents the different gates. 
--'Kn': Key.
--'X': X-Gate. A temporary Gate that stops Virus until its count decreases to zero.
--'Z': Stun tile. It freezes the Virus for limited steps.
--'*': Stunned Virus.
--'#': Horizontal wall.
--'|': Vertical wall.
+- 'P': Player. It is controlled by user.
+- 'V': Virus. Virus chases Player.
+- 'E': Exit. Player need to go to exit to win.
+- 'Gn': Gate. Gate will open when Player gets the key. n represents the different gates. 
+- 'Kn': Key.
+- 'X': X-Gate. A temporary Gate that stops Virus until its count decreases to zero.
+- 'Z': Stun tile. It freezes the Virus for limited steps.
+- '*': Stunned Virus.
+- '#': Horizontal wall.
+- '|': Vertical wall.
 
 This game has three Difficulty Levels: Easy/Medium/Hard
--Easy: There is no Virus. Player needs to collect keys and reach the Exit.
--Medium: Medium mode adds Virus, X-Gate and stunned Virus. X-Gate will temporarily stop Virus chasing 
+- Easy: There is no Virus. Player needs to collect keys and reach the Exit.
+- Medium: Medium mode adds Virus, X-Gate and stunned Virus. X-Gate will temporarily stop Virus chasing 
          the Player. When X-Gate opens, Virus starts to move. Player needs to eat Z to freeze Virus.
--Hard: The maze is much bigger. Virus increases speed(double) when it is close to the Player. 
+- Hard: The maze is much bigger. Virus increases speed(double) when it is close to the Player. 
 
 ----------------------------------
 
 ## Features
 Map:
--Procedural maze generation using a recursive-backtracker algorithm
--Different maze sizes per difficulty (7x7 Easy, 13x13 Medium, 23x23 Hard)
--Box-drawing wall rendering (corners, T-junctions, crosses auto-selected per tile)
--Extra loop openings added on Medium/Hard to give the player alternate escape routes
--Exit placed at the farthest reachable cell from spawn (Easy/Medium), or randomly within the top 20% of distances (Hard)
--Gate placement verified by BFS to ensure each gate genuinely blocks the route to the exit
--X-Gate
--Gate and key system
--Stun tiles
+- Procedural maze generation using a recursive-backtracker algorithm
+- Different maze sizes per difficulty (7x7 Easy, 13x13 Medium, 23x23 Hard)
+- Box-drawing wall rendering (corners, T-junctions, crosses auto-selected per tile)
+- Extra loop openings added on Medium/Hard to give the player alternate escape routes
+- Exit placed at the farthest reachable cell from spawn (Easy/Medium), or randomly within the top 20% of distances (Hard)
+- Gate placement verified by BFS to ensure each gate genuinely blocks the route to the exit
+- X-Gate
+- Gate and key system
+- Stun tiles
 
 Virus:
--In Medium and Hard mode, Virus chases the Player actively instead of chasing randomly.
--Virus uses Breath-First Search (BFS) path finding which can find the shortest way to Player. BFS
--Virus is blocked by closed X-Gates for limited steps at the beginning of the game.
--Stunned Virus: Virus would be frozen for limited steps when it touches the 'Z'.
--In Medium mode, the Virus move one step every time. In Hard mode, the Virus move two steps when it is close to Player
+- In Medium and Hard mode, Virus chases the Player actively instead of chasing randomly.
+- Virus uses Breath-First Search (BFS) path finding which can find the shortest way to Player. BFS
+- Virus is blocked by closed X-Gates for limited steps at the beginning of the game.
+- Stunned Virus: Virus would be frozen for limited steps when it touches the 'Z'.
+- In Medium mode, the Virus move one step every time. In Hard mode, the Virus move two steps when it is close to Player
 
 
 Game and Interaction:
