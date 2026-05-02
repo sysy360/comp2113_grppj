@@ -62,6 +62,7 @@ Main:
 - Post-game score management (save on win, display rankings)
 - Handles both win and loss outcomes with appropriate messages
 
+Game:
 
 
 Score:
@@ -81,8 +82,9 @@ Score:
 # How 6 coding requirements are satisfied?
 
 1.Generation of random events:
--The maze is procedurally generated at runtime using a recursive-backtracker algorithm. 
+- The maze is procedurally generated at runtime using a recursive-backtracker algorithm. 
 - Each run produces a unique layout. Randomness also change exit placement on Hard mode, gate/key positions, X-Gate step countdown, stun tile placement, and the order in which maze corridors are carved.
+- Randomized stun tile duration (1-3 steps on Medium, 3-5 steps on Hard) assigned in handleInteractions() when the player picks up a stun tile
 
 
 2.Data structures for storing data:
@@ -97,6 +99,7 @@ The orders starting from the least step taken to the most, regardless of difficu
 -vector<vector<Pos>> is used to store the parent grid (last grid).
 -vector<vector<bool>> is used to store whether the grid has been visited or not.
 -quene<Pos> help Virus do search job. It stores some grids waiting to be checked by Virus.
+-game.cpp's shortestVirusDistance() uses vector<vector<int>> for distance grid and queue<Pos> for BFS frontier when calculating hard-mode speed scaling
 
 
 4.File input/output:
