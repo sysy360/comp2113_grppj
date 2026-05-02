@@ -265,7 +265,7 @@ int runGame(Difficulty diff) {
                 bool endgamePressure = allNumberedGatesOpen(ms);
 
                 // speed up the virus if the player is close, but keep it readable
-                if (chaseDist <= 3 && (playerSteps % 2 == 0)) {
+                if (endgamePressure && chaseDist <= 3 && (playerSteps % 2 == 0)) {
                     currentVirusSpeed = 2;
                 } else if (endgamePressure && chaseDist <= 7 && (playerSteps % 3 == 0)) {
                     currentVirusSpeed = 2;
