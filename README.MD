@@ -35,9 +35,12 @@ This game has three Difficulty Levels: Easy/Medium/Hard
 
 ## Features
 Map:
--Random maze generation
--Different maze sizes
--Wall paths
+-Procedural maze generation using a recursive-backtracker algorithm
+-Different maze sizes per difficulty (7x7 Easy, 13x13 Medium, 23x23 Hard)
+-Box-drawing wall rendering (corners, T-junctions, crosses auto-selected per tile)
+-Extra loop openings added on Medium/Hard to give the player alternate escape routes
+-Exit placed at the farthest reachable cell from spawn (Easy/Medium), or randomly within the top 20% of distances (Hard)
+-Gate placement verified by BFS to ensure each gate genuinely blocks the route to the exit
 -X-Gate
 -Gate and key system
 -Stun tiles
@@ -71,7 +74,8 @@ Score:
 # How 6 coding requirements are satisfied?
 
 1.Generation of random events:
--Map is randomly picked from a library of finished maps.
+-The maze is procedurally generated at runtime using a recursive-backtracker algorithm. 
+- Each run produces a unique layout. Randomness also change exit placement on Hard mode, gate/key positions, X-Gate step countdown, stun tile placement, and the order in which maze corridors are carved.
 
 
 2.Data structures for storing data:
